@@ -13,8 +13,8 @@ import {
   initializeDefaultUsers,
   type UserRole,
   deleteUser as deleteUserUtil,
-} from "@/lib/auth-utils"
-import { useToast } from "@/components/ui/use-toast"
+} from "../lib/auth-utils"
+import { useToast } from "./ui/use-toast"
 
 type AuthContextType = {
   user: User | null
