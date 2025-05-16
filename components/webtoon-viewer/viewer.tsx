@@ -4,10 +4,10 @@ import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import { ChevronLeft, ChevronRight, Maximize2, ZoomIn, ZoomOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { cn } from "@/lib/utils"
-import type { EpisodeContent, ViewerSettings, WebtoonImage } from "@/lib/types"
+import { Button } from "../ui/button"
+import { Slider } from "../ui/slider"
+import { cn } from "../../lib/utils"
+import type { EpisodeContent, ViewerSettings, WebtoonImage } from "../../lib/types"
 
 interface WebtoonViewerProps {
   content: EpisodeContent

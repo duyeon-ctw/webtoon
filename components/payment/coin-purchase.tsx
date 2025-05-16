@@ -1,18 +1,29 @@
 "use client"
 
 import { useState } from "react"
-import { useAuth } from "@/components/auth-provider"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Input } from "@/components/ui/input"
+import { useAuth } from "../auth-provider"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Button } from "../ui/button"
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
+import { Input } from "../ui/input"
+import { 
+  RadioGroup, 
+  RadioGroupItem 
+} from "../ui/radio-group"
+import { 
+  Form, 
+  FormControl, 
+  FormField, 
+  FormItem, 
+  FormLabel 
+} from "../ui/form"
 import { 
   Select, 
   SelectContent, 
   SelectItem, 
   SelectTrigger, 
   SelectValue 
-} from "@/components/ui/select"
+} from "../ui/select"
 import { 
   Dialog, 
   DialogContent, 
@@ -22,12 +33,12 @@ import {
   DialogTitle, 
   DialogTrigger,
   DialogClose
-} from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { Coins, AlertCircle, CheckCircle2, Sparkles, Tag } from "lucide-react"
-import { PaymentService, CoinPackage } from "@/lib/services/payment-service"
-import { formatCurrency } from "@/lib/utils"
+} from "../ui/dialog"
+import { Badge } from "../ui/badge"
+import { Separator } from "../ui/separator"
+import { Check, CreditCard, Wallet, AlertCircle, CheckCircle2, Sparkles, Tag } from "lucide-react"
+import { PaymentService, CoinPackage } from "../../lib/services/payment-service"
+import { formatCurrency } from "../../lib/utils"
 
 export function CoinPurchase() {
   const { user } = useAuth()
@@ -182,7 +193,7 @@ export function CoinPurchase() {
             </CardHeader>
             <CardContent className="py-2">
               <div className="flex items-center justify-center mb-2">
-                <Coins className="h-6 w-6 text-amber-500 mr-2" />
+                <Check className="h-6 w-6 text-amber-500 mr-2" />
                 <span className="text-2xl font-bold">{pkg.coins}</span>
                 {pkg.bonusCoins && (
                   <Badge variant="outline" className="ml-2 bg-amber-50">
@@ -221,7 +232,7 @@ export function CoinPurchase() {
             <div className="space-y-2">
               <div className="font-medium">Selected Package</div>
               <div className="flex items-center">
-                <Coins className="h-5 w-5 text-amber-500 mr-2" />
+                <Check className="h-5 w-5 text-amber-500 mr-2" />
                 <span className="font-medium">{selectedPackage.name}:</span>
                 <span className="ml-2">{selectedPackage.coins} coins</span>
                 {selectedPackage.bonusCoins && (
