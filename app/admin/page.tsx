@@ -2,11 +2,14 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { useAuth } from "@/components/auth-provider"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
+import { useAuth } from "../../components/auth-provider"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
+import { Button } from "../../components/ui/button"
 import { BarChart, BookOpen, Flag, TrendingUp, Upload, Users } from "lucide-react"
+import { AnalyticsSection } from "../../components/admin/analytics-section"
+import { AnalyticsDashboard } from "../../components/admin/analytics-dashboard"
+import { AdminOverview } from "../../components/admin/overview"
 
 export default function AdminDashboardPage() {
   const { user } = useAuth()

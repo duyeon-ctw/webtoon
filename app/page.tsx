@@ -1,8 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { WebtoonCard } from "@/components/ui/webtoon-card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "../components/ui/button"
+import { WebtoonCard } from "../components/ui/webtoon-card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import {
   BookOpen,
   ChevronRight,
@@ -15,7 +15,7 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react"
-import type { Webtoon, Genre } from "@/lib/types"
+import type { Webtoon, Genre } from "../lib/types"
 
 // Mock data for the homepage
 const featuredWebtoons: Webtoon[] = [

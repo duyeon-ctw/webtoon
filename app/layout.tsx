@@ -1,12 +1,12 @@
 import type React from "react"
 import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/toaster"
-import { LanguageProvider } from "@/components/language-provider"
-import { AuthProvider } from "@/components/auth-provider"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import "@/app/globals.css"
+import { ThemeProvider } from "../components/theme-provider"
+import { Toaster } from "../components/ui/toaster"
+import { LanguageProvider } from "../components/language-provider"
+import { AuthProvider } from "../components/auth-provider"
+import Header from "../components/header"
+import Footer from "../components/footer"
+import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 

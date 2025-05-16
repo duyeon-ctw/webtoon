@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import DashboardNav from "@/components/dashboard-nav"
-import RouteGuard from "@/components/route-guard"
+import DashboardNav from "../../components/dashboard-nav"
+import RouteGuard from "../../components/route-guard"
 
 export const metadata: Metadata = {
   title: "Dashboard",

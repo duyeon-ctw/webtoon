@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react"
 import { useParams } from "next/navigation"
 import { Settings2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { WebtoonViewer } from "@/components/webtoon-viewer/viewer"
-import { ViewerSettingsPanel } from "@/components/webtoon-viewer/settings"
-import { CommentSection } from "@/components/comments/comment-section"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import type { EpisodeContent, ViewerSettings } from "@/lib/types"
+import { Button } from "../../../../components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "../../../../components/ui/sheet"
+import { WebtoonViewer } from "../../../../components/webtoon-viewer/viewer"
+import { ViewerSettingsPanel } from "../../../../components/webtoon-viewer/settings"
+import { CommentSection } from "../../../../components/comments/comment-section"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../../components/ui/tabs"
+import type { EpisodeContent, ViewerSettings } from "../../../../lib/types"
 
 // Mock data for testing
 const mockEpisode: EpisodeContent = {
