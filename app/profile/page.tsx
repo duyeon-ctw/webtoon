@@ -10,7 +10,7 @@ import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
 import { Textarea } from "../../components/ui/textarea"
-import { useToast } from "../../components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast"
 import { BookOpen, Camera, Edit, Mail, User, Trash2 } from "lucide-react"
 import { 
   Select, 
