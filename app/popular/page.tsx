@@ -17,7 +17,7 @@ export default function PopularPage() {
     id: `${i + 1}`,
     title: `Popular Title ${i + 1}`,
     author: `Author ${i + 1}`,
-    cover: `/placeholder.svg?height=400&width=300&text=Popular${i + 1}`,
+    cover: `/webtoon_cover/webtoon_cover (${(i % 18) + 1}).jpeg`,
     genre:
       i % 5 === 0 ? "Romance" : i % 5 === 1 ? "Action" : i % 5 === 2 ? "Fantasy" : i % 5 === 3 ? "Comedy" : "Drama",
     rating: (4 + Math.random()).toFixed(1),
@@ -59,7 +59,7 @@ export default function PopularPage() {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {popularWebcomics.map((comic) => (
                 <Card key={comic.id} className="apple-card overflow-hidden">
-                  <Link href={`/comic/${comic.id}`}>
+                  <Link href={`/read/${comic.id}`}>
                     <div className="relative aspect-[3/4] overflow-hidden rounded-t-2xl">
                       <div className="absolute left-0 top-0 z-10 flex h-8 w-8 items-center justify-center rounded-br-lg bg-black/70 text-white">
                         {comic.rank}
@@ -85,7 +85,7 @@ export default function PopularPage() {
                     </div>
                   </Link>
                   <CardContent className="p-4">
-                    <Link href={`/comic/${comic.id}`}>
+                    <Link href={`/read/${comic.id}`}>
                       <h3 className="line-clamp-1 font-semibold hover:underline">{comic.title}</h3>
                     </Link>
                     <p className="text-sm text-muted-foreground">by {comic.author}</p>

@@ -20,7 +20,7 @@ export default function GenresPage() {
       description: "Stories focusing on romantic relationships between characters",
       count: 1250,
       color: "bg-pink-500",
-      image: "/placeholder.svg?height=200&width=300&text=Romance",
+      image: "/webtoon_cover/webtoon_cover (1).jpeg",
     },
     {
       id: "action",
@@ -28,7 +28,7 @@ export default function GenresPage() {
       description: "Fast-paced stories with exciting action sequences",
       count: 980,
       color: "bg-red-500",
-      image: "/placeholder.svg?height=200&width=300&text=Action",
+      image: "/webtoon_cover/webtoon_cover (2).jpeg",
     },
     {
       id: "fantasy",
@@ -36,7 +36,7 @@ export default function GenresPage() {
       description: "Stories set in magical worlds with supernatural elements",
       count: 870,
       color: "bg-purple-500",
-      image: "/placeholder.svg?height=200&width=300&text=Fantasy",
+      image: "/webtoon_cover/webtoon_cover (3).jpeg",
     },
     {
       id: "comedy",
@@ -44,7 +44,7 @@ export default function GenresPage() {
       description: "Humorous stories designed to make readers laugh",
       count: 760,
       color: "bg-yellow-500",
-      image: "/placeholder.svg?height=200&width=300&text=Comedy",
+      image: "/webtoon_cover/webtoon_cover (4).jpeg",
     },
     {
       id: "drama",
@@ -52,7 +52,7 @@ export default function GenresPage() {
       description: "Character-driven stories with emotional depth",
       count: 650,
       color: "bg-blue-500",
-      image: "/placeholder.svg?height=200&width=300&text=Drama",
+      image: "/webtoon_cover/webtoon_cover (5).jpeg",
     },
     {
       id: "sci-fi",
@@ -60,7 +60,7 @@ export default function GenresPage() {
       description: "Stories exploring futuristic concepts and technology",
       count: 540,
       color: "bg-cyan-500",
-      image: "/placeholder.svg?height=200&width=300&text=Sci-Fi",
+      image: "/webtoon_cover/webtoon_cover (6).jpeg",
     },
     {
       id: "horror",
@@ -68,7 +68,7 @@ export default function GenresPage() {
       description: "Stories designed to frighten and unsettle readers",
       count: 430,
       color: "bg-gray-800",
-      image: "/placeholder.svg?height=200&width=300&text=Horror",
+      image: "/webtoon_cover/webtoon_cover (7).jpeg",
     },
     {
       id: "slice-of-life",
@@ -76,7 +76,7 @@ export default function GenresPage() {
       description: "Stories depicting everyday experiences and challenges",
       count: 320,
       color: "bg-green-500",
-      image: "/placeholder.svg?height=200&width=300&text=Slice+of+Life",
+      image: "/webtoon_cover/webtoon_cover (8).jpeg",
     },
     {
       id: "mystery",
@@ -84,7 +84,7 @@ export default function GenresPage() {
       description: "Stories involving puzzles, crimes, or secrets to be solved",
       count: 290,
       color: "bg-indigo-500",
-      image: "/placeholder.svg?height=200&width=300&text=Mystery",
+      image: "/webtoon_cover/webtoon_cover (9).jpeg",
     },
     {
       id: "thriller",
@@ -92,7 +92,7 @@ export default function GenresPage() {
       description: "Suspenseful stories that keep readers on the edge of their seats",
       count: 250,
       color: "bg-orange-500",
-      image: "/placeholder.svg?height=200&width=300&text=Thriller",
+      image: "/webtoon_cover/webtoon_cover (10).jpeg",
     },
     {
       id: "historical",
@@ -100,7 +100,7 @@ export default function GenresPage() {
       description: "Stories set in past time periods with historical context",
       count: 210,
       color: "bg-amber-700",
-      image: "/placeholder.svg?height=200&width=300&text=Historical",
+      image: "/webtoon_cover/webtoon_cover (11).jpeg",
     },
     {
       id: "sports",
@@ -108,7 +108,7 @@ export default function GenresPage() {
       description: "Stories centered around athletic competitions and sports",
       count: 180,
       color: "bg-emerald-500",
-      image: "/placeholder.svg?height=200&width=300&text=Sports",
+      image: "/webtoon_cover/webtoon_cover (12).jpeg",
     },
   ]
 
@@ -118,7 +118,7 @@ export default function GenresPage() {
       id: "1",
       title: "The Cosmic Journey",
       author: "Alex Chen",
-      cover: "/placeholder.svg?height=400&width=300",
+      cover: "/webtoon_cover/webtoon_cover (13).jpeg",
       genre: "Sci-Fi",
       rating: 4.8,
       views: "1.2M",
@@ -128,7 +128,7 @@ export default function GenresPage() {
       id: "2",
       title: "Mystic Academy",
       author: "Sophia Kim",
-      cover: "/placeholder.svg?height=400&width=300",
+      cover: "/webtoon_cover/webtoon_cover (14).jpeg",
       genre: "Fantasy",
       rating: 4.7,
       views: "980K",
@@ -138,7 +138,7 @@ export default function GenresPage() {
       id: "3",
       title: "Urban Legends",
       author: "Marcus Johnson",
-      cover: "/placeholder.svg?height=400&width=300",
+      cover: "/webtoon_cover/webtoon_cover (15).jpeg",
       genre: "Horror",
       rating: 4.6,
       views: "850K",
@@ -148,7 +148,7 @@ export default function GenresPage() {
       id: "4",
       title: "Love in Spring",
       author: "Emily Wang",
-      cover: "/placeholder.svg?height=400&width=300",
+      cover: "/webtoon_cover/webtoon_cover (16).jpeg",
       genre: "Romance",
       rating: 4.9,
       views: "1.5M",

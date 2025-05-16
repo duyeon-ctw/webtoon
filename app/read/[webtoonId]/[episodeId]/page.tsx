@@ -17,7 +17,7 @@ const mockEpisode: EpisodeContent = {
   episodeId: "ep1",
   images: Array.from({ length: 20 }, (_, i) => ({
     id: `img${i}`,
-    url: `/placeholder.jpg`,
+    url: `/webtoon_cover/webtoon_cover (${(i % 18) + 1}).jpeg`,
     width: 800,
     height: 1200,
     order: i,

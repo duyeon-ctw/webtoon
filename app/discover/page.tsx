@@ -20,7 +20,7 @@ export default function DiscoverPage() {
     id: `${i + 1}`,
     title: `Webcomic Title ${i + 1}`,
     author: `Author ${i + 1}`,
-    cover: `/placeholder.svg?height=400&width=300&text=${i + 1}`,
+    cover: `/webtoon_cover/webtoon_cover (${(i % 18) + 1}).jpeg`,
     genre: i % 3 === 0 ? "Fantasy" : i % 3 === 1 ? "Romance" : "Action",
     rating: (4 + Math.random()).toFixed(1),
     views: `${Math.floor(Math.random() * 900 + 100)}K`,
@@ -153,7 +153,7 @@ export default function DiscoverPage() {
 
           {webcomics.map((comic) => (
             <Card key={comic.id} className="overflow-hidden">
-              <Link href={`/comic/${comic.id}`}>
+              <Link href={`/read/${comic.id}`}>
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
                     src={comic.cover || "/placeholder.svg"}
@@ -164,7 +164,7 @@ export default function DiscoverPage() {
                 </div>
               </Link>
               <CardContent className="p-4">
-                <Link href={`/comic/${comic.id}`}>
+                <Link href={`/read/${comic.id}`}>
                   <h3 className="line-clamp-1 font-semibold hover:underline">{comic.title}</h3>
                 </Link>
                 <p className="text-sm text-muted-foreground">by {comic.author}</p>
