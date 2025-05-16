@@ -233,4 +233,20 @@ export interface CreatorAnnouncement {
   isPinned: boolean;
   likes: number;
   comments: number;
+}
+
+export interface WebtoonImage {
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+  order: number;
+}
+
+export interface EpisodeContent {
+  id: string;
+  episodeId: string;
+  images: WebtoonImage[];
+  format: 'vertical' | 'horizontal' | 'cuttoon';
+  language: string;
 } 

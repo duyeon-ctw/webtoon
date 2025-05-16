@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react"
+"use client"
+
+import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import { ChevronLeft, ChevronRight, Maximize2, ZoomIn, ZoomOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { cn } from "@/lib/utils"
-import type { EpisodeContent, ViewerSettings } from "@/lib/types"
+import type { EpisodeContent, ViewerSettings, WebtoonImage } from "@/lib/types"
 
 interface WebtoonViewerProps {
   content: EpisodeContent
@@ -21,10 +23,94 @@ export function WebtoonViewer({
   onSettingsChange,
 }: WebtoonViewerProps) {
   const { theme } = useTheme()
-  const viewerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+  const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({})
   const [scale, setScale] = useState(1)
   const [isFullscreen, setIsFullscreen] = useState(false)
+
+  // Apply theme settings
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    container.style.filter = `brightness(${settings.brightness}%) contrast(${settings.contrast}%)`
+  }, [settings.brightness, settings.contrast])
+
+  // Handle auto-scrolling
+  useEffect(() => {
+    if (!settings.autoScroll || !containerRef.current) return
+
+    const container = containerRef.current
+    let animationId: number
+    let lastTimestamp = 0
+
+    const scroll = (timestamp: number) => {
+      if (!lastTimestamp) lastTimestamp = timestamp
+      const elapsed = timestamp - lastTimestamp
+
+      if (elapsed > 1000 / 30) { // Limit to ~30fps for performance
+        const scrollAmount = (settings.autoScrollSpeed / 5) * elapsed / 16.67 // Normalize by 60fps frame time
+        container.scrollTop += scrollAmount
+        lastTimestamp = timestamp
+      }
+
+      animationId = requestAnimationFrame(scroll)
+    }
+
+    animationId = requestAnimationFrame(scroll)
+
+    return () => cancelAnimationFrame(animationId)
+  }, [settings.autoScroll, settings.autoScrollSpeed])
+
+  // Track scroll position and calculate current image
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const handleScroll = () => {
+      const scrollPos = container.scrollTop
+      const containerHeight = container.clientHeight
+      const totalHeight = container.scrollHeight
+      const scrollPercentage = (scrollPos / (totalHeight - containerHeight)) * 100
+
+      setScrollPosition(scrollPercentage > 100 ? 100 : scrollPercentage < 0 ? 0 : scrollPercentage)
+
+      // Find current image based on scroll position
+      const imageElements = Array.from(container.querySelectorAll('[data-image-index]'))
+      for (let i = 0; i < imageElements.length; i++) {
+        const element = imageElements[i] as HTMLElement
+        const rect = element.getBoundingClientRect()
+        if (rect.top <= containerHeight / 2 && rect.bottom >= containerHeight / 2) {
+          const index = parseInt(element.dataset.imageIndex || '0', 10)
+          if (index !== currentImageIndex) {
+            setCurrentImageIndex(index)
+            onProgressUpdate?.({ imageIndex: index, scrollPosition: scrollPercentage })
+          }
+          break
+        }
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll)
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [currentImageIndex, onProgressUpdate])
+
+  // Track image loading
+  const handleImageLoad = (imageId: string) => {
+    setLoadedImages(prev => ({
+      ...prev,
+      [imageId]: true,
+    }))
+
+    // Check if all images are loaded
+    const allLoaded = content.images.every(img => loadedImages[img.id])
+    if (allLoaded) {
+      setIsLoading(false)
+    }
+  }
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -42,39 +128,6 @@ export function WebtoonViewer({
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [content.format, currentImageIndex])
 
-  // Handle scroll progress for vertical format
-  useEffect(() => {
-    if (content.format !== "vertical" || !viewerRef.current) return
-
-    const handleScroll = () => {
-      const viewer = viewerRef.current
-      if (!viewer) return
-
-      const scrollPosition = viewer.scrollTop
-      const viewerHeight = viewer.clientHeight
-      const totalHeight = viewer.scrollHeight
-      const imageElements = viewer.querySelectorAll("[data-image-index]")
-      
-      let currentIndex = 0
-      imageElements.forEach((el) => {
-        const rect = el.getBoundingClientRect()
-        if (rect.top <= viewerHeight / 2) {
-          currentIndex = Number(el.getAttribute("data-image-index"))
-        }
-      })
-
-      setCurrentImageIndex(currentIndex)
-      onProgressUpdate?.({
-        imageIndex: currentIndex,
-        scrollPosition: scrollPosition / totalHeight,
-      })
-    }
-
-    const viewer = viewerRef.current
-    viewer.addEventListener("scroll", handleScroll)
-    return () => viewer.removeEventListener("scroll", handleScroll)
-  }, [content.format, onProgressUpdate])
-
   const navigateImage = (delta: number) => {
     const newIndex = Math.max(0, Math.min(currentImageIndex + delta, content.images.length - 1))
     setCurrentImageIndex(newIndex)
@@ -86,7 +139,7 @@ export function WebtoonViewer({
 
   const toggleFullscreen = async () => {
     if (!document.fullscreenElement) {
-      await viewerRef.current?.requestFullscreen()
+      await containerRef.current?.requestFullscreen()
       setIsFullscreen(true)
     } else {
       await document.exitFullscreen()
@@ -94,84 +147,73 @@ export function WebtoonViewer({
     }
   }
 
-  const renderVerticalViewer = () => (
-    <div
-      ref={viewerRef}
-      className={cn(
-        "w-full h-full overflow-y-auto overflow-x-hidden",
-        "scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent"
-      )}
-      style={{
-        filter: `brightness(${settings.brightness}%) contrast(${settings.contrast}%)`,
-      }}
-    >
-      {content.images.map((image, index) => (
-        <div
-          key={image.id}
-          data-image-index={index}
-          className="relative w-full"
-          style={{ maxWidth: image.width * scale }}
-        >
-          <Image
-            src={image.url}
-            alt={`Page ${index + 1}`}
-            width={image.width}
-            height={image.height}
-            className="w-full h-auto"
-            priority={index === 0}
-            loading={index === 0 ? "eager" : "lazy"}
-            placeholder={image.blurHash ? "blur" : "empty"}
-            blurDataURL={image.blurHash}
-          />
+  // Render images based on the format
+  const renderImages = () => {
+    if (content.format === 'vertical') {
+      return (
+        <div className="flex flex-col items-center">
+          {content.images.map((image, index) => (
+            <div 
+              key={image.id} 
+              className="w-full" 
+              data-image-index={index}
+            >
+              <div className="relative mx-auto" style={{
+                width: '100%',
+                maxWidth: '800px',
+                height: 'auto',
+                aspectRatio: `${image.width} / ${image.height}`,
+              }}>
+                <img
+                  src={image.url}
+                  alt={`Page ${index + 1}`} 
+                  className="w-full h-auto object-contain" 
+                  onLoad={() => handleImageLoad(image.id)}
+                />
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  )
-
-  const renderHorizontalViewer = () => (
-    <div className="relative w-full h-full flex items-center justify-center">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute left-4 z-10"
-        onClick={() => navigateImage(-1)}
-        disabled={currentImageIndex === 0}
-      >
-        <ChevronLeft className="h-8 w-8" />
-      </Button>
-
-      <div
-        className="relative w-full h-full flex items-center justify-center"
-        style={{
-          filter: `brightness(${settings.brightness}%) contrast(${settings.contrast}%)`,
-        }}
-      >
-        {content.images[currentImageIndex] && (
-          <Image
-            src={content.images[currentImageIndex].url}
-            alt={`Page ${currentImageIndex + 1}`}
-            width={content.images[currentImageIndex].width}
-            height={content.images[currentImageIndex].height}
-            className="max-w-full max-h-full object-contain"
-            priority
-          />
-        )}
+      )
+    }
+    
+    // Add horizontal format support later
+    return (
+      <div className="flex flex-col items-center">
+        <div className="text-center p-8">This format is not supported yet</div>
       </div>
-
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute right-4 z-10"
-        onClick={() => navigateImage(1)}
-        disabled={currentImageIndex === content.images.length - 1}
-      >
-        <ChevronRight className="h-8 w-8" />
-      </Button>
-    </div>
-  )
+    )
+  }
 
   return (
-    <div className="relative w-full h-full bg-background">
+    <div className="relative h-full w-full">
+      <div
+        ref={containerRef}
+        className={`h-full w-full overflow-y-auto overflow-x-hidden ${settings.theme === 'dark' ? 'bg-black text-white' : settings.theme === 'sepia' ? 'bg-amber-50 text-gray-800' : 'bg-white text-black'}`}
+      >
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          </div>
+        )}
+        {renderImages()}
+      </div>
+
+      {settings.showProgressBar && (
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-muted">
+          <div 
+            className="h-full bg-primary transition-all duration-100"
+            style={{ width: `${scrollPosition}%` }}
+          />
+        </div>
+      )}
+
+      {settings.showPageNumber && (
+        <div className="absolute bottom-2 right-2 bg-background/70 backdrop-blur-sm text-foreground px-2 py-1 rounded-md text-sm">
+          {currentImageIndex + 1} / {content.images.length}
+        </div>
+      )}
+
       {/* Viewer Controls */}
       <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
         <Button variant="ghost" size="icon" onClick={() => setScale(Math.max(0.5, scale - 0.1))}>
@@ -203,11 +245,6 @@ export function WebtoonViewer({
           />
         </div>
       )}
-
-      {/* Main Viewer */}
-      <div className="w-full h-full">
-        {content.format === "vertical" ? renderVerticalViewer() : renderHorizontalViewer()}
-      </div>
     </div>
   )
 } 
