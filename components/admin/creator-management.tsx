@@ -1,15 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "../../ui/card"
-import { Button } from "../../ui/button"
-import { Input } from "../../ui/input"
-import { Checkbox } from "../../ui/checkbox"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs"
-import { Badge } from "../../ui/badge"
-import { Progress } from "../../ui/progress"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../ui/select"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../ui/table"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "../ui/card"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
+import { Checkbox } from "../ui/checkbox"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
+import { Badge } from "../ui/badge"
+import { Progress } from "../ui/progress"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
 import {
   Dialog,
   DialogContent,
@@ -18,11 +18,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../ui/dialog"
-import { Label } from "../../ui/label"
-import { Textarea } from "../../ui/textarea"
-import { Switch } from "../../ui/switch"
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar"
+} from "../ui/dialog"
+import { Label } from "../ui/label"
+import { Textarea } from "../ui/textarea"
+import { Switch } from "../ui/switch"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,7 +30,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../ui/dropdown-menu"
+} from "../ui/dropdown-menu"
 import {
   Search,
   Filter,
