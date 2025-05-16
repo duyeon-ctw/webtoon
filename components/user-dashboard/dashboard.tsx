@@ -1,14 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useAuth } from "@/components/auth-provider"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { WebtoonCard } from "@/components/ui/webtoon-card"
+import { useAuth } from "../auth-provider"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
+import { Button } from "../ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { Badge } from "../ui/badge"
+import { WebtoonCard } from "../ui/webtoon-card"
 import { 
   AlertCircle, 
   BookOpen, 
@@ -23,10 +23,10 @@ import {
   Ticket, 
   User
 } from "lucide-react"
-import { formatCurrency, formatDate, getRelativeTime } from "@/lib/utils"
+import { formatCurrency, formatDate, getRelativeTime } from "../../lib/utils"
 import Link from "next/link"
-import type { Webtoon, ReadingProgress, User as UserType } from "@/lib/types"
-import { PaymentService, Subscription } from "@/lib/services/payment-service"
+import type { Webtoon, ReadingProgress, User as UserType } from "../../lib/types"
+import { PaymentService, Subscription } from "../../lib/services/payment-service"
 
 // Mock data for the demo
 const mockFavorites: Webtoon[] = [

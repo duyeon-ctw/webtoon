@@ -1,21 +1,21 @@
 "use client"
 
 import { useState } from "react"
-import { useAuth } from "@/components/auth-provider"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { useAuth } from "../auth-provider"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Button } from "../ui/button"
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
 import { 
   Select, 
   SelectContent, 
   SelectItem, 
   SelectTrigger, 
   SelectValue 
-} from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
+} from "../ui/select"
+import { Badge } from "../ui/badge"
 import { Check, AlertCircle, CheckCircle2, Sparkles } from "lucide-react"
-import { PaymentService } from "@/lib/services/payment-service"
-import { formatCurrency } from "@/lib/utils"
+import { PaymentService } from "../../lib/services/payment-service"
+import { formatCurrency } from "../../lib/utils"
 
 export function SubscriptionPlans() {
   const { user } = useAuth()
