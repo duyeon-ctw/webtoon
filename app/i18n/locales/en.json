@@ -1,0 +1,40 @@
+{
+  "common": {
+    "home": "Home",
+    "discover": "Discover",
+    "popular": "Popular",
+    "new": "New",
+    "genres": "Genres",
+    "search": "Search",
+    "login": "Login",
+    "signup": "Sign Up",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "webtoon": {
+    "episodes": "Episodes",
+    "likes": "Likes",
+    "comments": "Comments",
+    "subscribe": "Subscribe",
+    "read": "Read",
+    "continue": "Continue Reading",
+    "preview": "Preview",
+    "share": "Share"
+  },
+  "creator": {
+    "dashboard": "Creator Dashboard",
+    "stats": "Statistics",
+    "revenue": "Revenue",
+    "upload": "Upload",
+    "manage": "Manage",
+    "announcements": "Announcements"
+  },
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "users": "User Management",
+    "content": "Content Management",
+    "payments": "Payment Management",
+    "analytics": "Analytics"
+  }
+} 

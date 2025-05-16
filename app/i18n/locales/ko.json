@@ -1,0 +1,40 @@
+{
+  "common": {
+    "home": "홈",
+    "discover": "탐색",
+    "popular": "인기",
+    "new": "신작",
+    "genres": "장르",
+    "search": "검색",
+    "login": "로그인",
+    "signup": "회원가입",
+    "profile": "프로필",
+    "settings": "설정",
+    "logout": "로그아웃"
+  },
+  "webtoon": {
+    "episodes": "에피소드",
+    "likes": "좋아요",
+    "comments": "댓글",
+    "subscribe": "구독",
+    "read": "읽기",
+    "continue": "이어보기",
+    "preview": "미리보기",
+    "share": "공유"
+  },
+  "creator": {
+    "dashboard": "크리에이터 대시보드",
+    "stats": "통계",
+    "revenue": "수익",
+    "upload": "업로드",
+    "manage": "관리",
+    "announcements": "공지사항"
+  },
+  "admin": {
+    "dashboard": "관리자 대시보드",
+    "users": "사용자 관리",
+    "content": "콘텐츠 관리",
+    "payments": "결제 관리",
+    "analytics": "분석"
+  }
+} 
