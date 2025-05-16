@@ -365,5 +365,36 @@ export default function ContentModerationPage() {
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending</CardTitle>
             <AlertCircle className="h-4 w-4 text-yellow-500" />
-
-\
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{moderationStats.pendingReports}</div>
+            <p className="text-xs text-muted-foreground">Requires attention</p>
+            <Progress className="mt-2" value={45} />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Resolved</CardTitle>
+            <AlertCircle className="h-4 w-4 text-green-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{moderationStats.resolvedReports}</div>
+            <p className="text-xs text-muted-foreground">Issues addressed</p>
+            <Progress className="mt-2" value={35} />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Avg. Resolution Time</CardTitle>
+            <AlertCircle className="h-4 w-4 text-blue-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{moderationStats.avgTimeToResolve}</div>
+            <p className="text-xs text-muted-foreground">-10min from last week</p>
+            <Progress className="mt-2" value={65} />
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  )
+  }
