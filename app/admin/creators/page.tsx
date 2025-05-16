@@ -2,8 +2,8 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { useAuth } from "@/components/auth-provider"
-import { CreatorManagement } from "@/components/admin/creator-management"
+import { useAuth } from "../../../components/auth-provider"
+import { CreatorManagement } from "../../../components/admin/creator-management"
 
 export default function AdminCreatorsPage() {
   const { user } = useAuth()
