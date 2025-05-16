@@ -221,7 +221,7 @@ export default function DashboardPage() {
               <CardContent>
                 <div className="grid grid-cols-3 gap-2">
                   {[1, 2, 3, 4, 5, 6].map((i) => (
-                    <Link key={i} href={`/comic/${i}`} className="space-y-1">
+                    <Link key={i} href={`/read/${i}`} className="space-y-1">
                       <div className="relative aspect-[3/4] overflow-hidden rounded">
                         <Image
                           src={`/placeholder.svg?height=120&width=90&text=${i}`}

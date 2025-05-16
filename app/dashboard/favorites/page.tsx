@@ -118,7 +118,7 @@ export default function FavoritesPage() {
               </CardContent>
               <CardFooter className="grid grid-cols-2 gap-2 p-4 pt-0">
                 <Button asChild variant="default">
-                  <Link href={`/comic/${item.id}`}>Read</Link>
+                  <Link href={`/read/${item.id}`}>Read</Link>
                 </Button>
                 <Button
                   variant="outline"

@@ -257,7 +257,7 @@ export default function ComicPage({ params }: { params: { id: string } }) {
           <TabsContent value="similar" className="mt-6">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
               {comic.similar.map((similar) => (
-                <Link key={similar.id} href={`/comic/${similar.id}`} className="group">
+                <Link key={similar.id} href={`/read/${similar.id}`} className="group">
                   <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
                     <Image
                       src={similar.cover || "/placeholder.svg"}

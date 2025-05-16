@@ -58,7 +58,7 @@ export default function NewReleasesPage() {
                 .filter((comic, index) => (period.value === "today" ? index < 8 : true))
                 .map((comic) => (
                   <Card key={comic.id} className="apple-card overflow-hidden">
-                    <Link href={`/comic/${comic.id}`}>
+                    <Link href={`/read/${comic.id}`}>
                       <div className="relative aspect-[3/4] overflow-hidden rounded-t-2xl">
                         <div className="absolute right-0 top-0 z-10 m-2 rounded-full bg-primary px-2 py-1 text-xs text-white">
                           NEW
@@ -72,7 +72,7 @@ export default function NewReleasesPage() {
                       </div>
                     </Link>
                     <CardContent className="p-4">
-                      <Link href={`/comic/${comic.id}`}>
+                      <Link href={`/read/${comic.id}`}>
                         <h3 className="line-clamp-1 font-semibold hover:underline">{comic.title}</h3>
                       </Link>
                       <p className="text-sm text-muted-foreground">by {comic.author}</p>

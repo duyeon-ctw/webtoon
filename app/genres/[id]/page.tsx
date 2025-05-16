@@ -119,7 +119,7 @@ export default function GenrePage({ params }: Props) {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {webcomics.map((comic) => (
           <Card key={comic.id} className="apple-card overflow-hidden">
-            <Link href={`/comic/${comic.id}`}>
+            <Link href={`/read/${comic.id}`}>
               <div className="relative aspect-[3/4] overflow-hidden rounded-t-2xl">
                 <Image
                   src={comic.cover || "/placeholder.svg"}
@@ -130,7 +130,7 @@ export default function GenrePage({ params }: Props) {
               </div>
             </Link>
             <CardContent className="p-4">
-              <Link href={`/comic/${comic.id}`}>
+              <Link href={`/read/${comic.id}`}>
                 <h3 className="line-clamp-1 font-semibold hover:underline">{comic.title}</h3>
               </Link>
               <p className="text-sm text-muted-foreground">by {comic.author}</p>

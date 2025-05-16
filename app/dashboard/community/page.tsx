@@ -253,7 +253,7 @@ export default function CommunityPage() {
                     )}
                     {post.comic && (
                       <Link
-                        href={`/comic/${post.comic.id}`}
+                        href={`/read/${post.comic.id}`}
                         className="mt-2 inline-block rounded-md bg-muted px-3 py-1 text-sm hover:bg-muted/80"
                       >
                         {post.comic.title}

@@ -159,7 +159,7 @@ export default function MyComicsPage() {
                             <Link href={`/dashboard/analytics?series=${comic.id}`}>View Analytics</Link>
                           </DropdownMenuItem>
                           <DropdownMenuItem asChild>
-                            <Link href={`/comic/${comic.id}`}>View Series</Link>
+                            <Link href={`/read/${comic.id}`}>View Series</Link>
                           </DropdownMenuItem>
                           <DropdownMenuItem asChild>
                             <Link href={`/dashboard/edit-series/${comic.id}`}>Edit Series</Link>
